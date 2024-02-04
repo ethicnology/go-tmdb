@@ -19,7 +19,6 @@ func TitlesByLabel(conn *sqlx.DB, label string) []Title {
 	if err != nil {
 		println(err.Error())
 	}
-	println(label)
-	println(len(titles))
+
 	return titles
 }
