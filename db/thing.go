@@ -62,3 +62,15 @@ func AddThing(conn *sqlx.DB, tmdb *int, imdb *string, duration *int, release *st
 
 	return lastInsertId
 }
+
+func GetThingByIdThing(conn *sqlx.DB, idThing int) *Thing {
+	sql := `SELECT * FROM thing WHERE id = $1`
+
+	thing := Thing{}
+	err := conn.Get(&thing, sql, idThing)
+	if err != nil {
+		println(err.Error())
+	}
+
+	return &thing
+}
