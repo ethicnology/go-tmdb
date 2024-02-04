@@ -15,10 +15,7 @@ func Start() {
 		log.Fatal("Error loading .env file")
 	}
 
-	conn, err := db.Connect()
-	if err != nil {
-		log.Fatal(err)
-	}
+	conn := db.Connect()
 	defer conn.Close()
 
 	db.CreateTables(conn)

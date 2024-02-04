@@ -1,7 +1,6 @@
 package db
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/jmoiron/sqlx"
@@ -13,8 +12,7 @@ func ConnectionString() string {
 	return connectionString
 }
 
-func Connect() (*sqlx.DB, error) {
+func Connect() *sqlx.DB {
 	db := sqlx.MustConnect("postgres", ConnectionString()+"?sslmode=disable")
-	fmt.Println("Connected to the database")
-	return db, nil
+	return db
 }
