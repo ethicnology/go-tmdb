@@ -24,19 +24,17 @@ func Start() {
 
 	r := gin.Default()
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
-
 	r.GET("/search/:query", func(c *gin.Context) {
 		query := c.Param("query")
 		titles := db.TitlesByLabel(conn, query)
+		if len(titles) == 0 {
+			c.JSON(http.StatusNoContent, gin.H{})
+			return
+		}
 		c.JSON(http.StatusOK, titles)
 	})
 
-	r.GET("/movies/:id", func(c *gin.Context) {
+	r.GET("/thing/:id", func(c *gin.Context) {
 		id := c.Param("id")
 
 		idThing, err := strconv.Atoi(id)
@@ -45,9 +43,27 @@ func Start() {
 			return
 		}
 
-		thing := db.GetThingByIdThing(conn, idThing)
+		thing, _ := db.GetThingById(conn, idThing)
 		if thing == nil {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Thing not found"})
+			c.JSON(http.StatusNoContent, gin.H{})
+			return
+		}
+
+		c.JSON(http.StatusOK, thing)
+	})
+
+	r.GET("/thing/:id/details", func(c *gin.Context) {
+		id := c.Param("id")
+
+		idThing, err := strconv.Atoi(id)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID format"})
+			return
+		}
+
+		thing, _ := db.GetThingDetailsById(conn, idThing)
+		if thing == nil {
+			c.JSON(http.StatusNoContent, gin.H{})
 			return
 		}
 
