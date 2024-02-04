@@ -24,6 +24,14 @@ func Start() {
 
 	r := gin.Default()
 
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"/search/:query ":     "Find a thing by querying part of a title. eg: /search/Amélie",
+			"/thing/:id ":         "Return the thing according to the provided id. eg: /thing/211",
+			"/thing/:id/details ": "Return all details of the provided id thing. eg: /thing/211/details",
+		})
+	})
+
 	r.GET("/search/:query", func(c *gin.Context) {
 		query := c.Param("query")
 		titles := db.TitlesByLabel(conn, query)
