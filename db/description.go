@@ -12,6 +12,7 @@ type Description struct {
 
 func AddDescription(conn *sqlx.DB, idThing int, lang string, label string) int {
 	if label == "" {
+		println("EMPTY: descr ", idThing, lang)
 		return 0
 	}
 

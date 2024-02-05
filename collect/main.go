@@ -21,11 +21,10 @@ func Start() {
 	db.CreateTables(conn)
 
 	t := db.GetLastThing(conn)
-	println(t.Tmdb.Int32)
 
 	lang := "en"
 
-	for i := int(t.Tmdb.Int32); i < math.MaxInt; i++ {
+	for i := *t.Tmdb; i < math.MaxInt; i++ {
 
 		m, err := tmdb.GetMovie(i, lang)
 		if err != nil {
@@ -70,7 +69,6 @@ func Start() {
 
 			}
 		}
-
 	}
 
 }

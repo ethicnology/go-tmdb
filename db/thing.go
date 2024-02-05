@@ -7,13 +7,13 @@ import (
 )
 
 type Thing struct {
-	ID        int            `db:"id"`
-	Tmdb      sql.NullInt32  `db:"tmdb"`
-	Imdb      sql.NullString `db:"imdb"`
-	CreatedAt sql.NullString `db:"created_at"`
-	Duration  sql.NullInt32  `db:"duration"`
-	Release   sql.NullString `db:"release"`
-	Cover     sql.NullString `db:"cover"`
+	ID        int     `json:"id" db:"id"`
+	CreatedAt string  `json:"created_at" db:"created_at"`
+	Tmdb      *int    `json:"tmdb" db:"tmdb"`
+	Imdb      *string `json:"imdb" db:"imdb"`
+	Duration  *int    `json:"duration" db:"duration"`
+	Release   *string `json:"release" db:"release"`
+	Cover     *string `json:"cover" db:"cover"`
 }
 
 func GetLastThing(conn *sqlx.DB) Thing {

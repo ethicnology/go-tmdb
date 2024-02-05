@@ -25,6 +25,7 @@ func TitlesByLabel(conn *sqlx.DB, label string) []Title {
 
 func AddTitle(conn *sqlx.DB, idThing int, isOriginal bool, lang string, label string) int {
 	if label == "" {
+		println("EMPTY: title ", idThing, lang)
 		return 0
 	}
 
