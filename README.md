@@ -2,5 +2,10 @@
 
 ## scrap tmdb
 ```sh
-go run collect.go
+go run main.go
+```
+
+## api
+```sh
+go run main.go --mode api
 ```
