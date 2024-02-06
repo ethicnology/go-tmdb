@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"new_app/api"
-	"new_app/collect"
+	"go-tmdb/api"
+	"go-tmdb/collect"
 )
 
 func main() {

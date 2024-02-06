@@ -1,4 +1,4 @@
-module new_app
+module go-tmdb
 
 go 1.21.6
 

@@ -1,8 +1,8 @@
 package api
 
 import (
+	"go-tmdb/db"
 	"net/http"
-	"new_app/db"
 	"strconv"
 
 	"github.com/gin-gonic/gin"

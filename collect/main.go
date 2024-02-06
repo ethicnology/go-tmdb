@@ -1,10 +1,10 @@
 package collect
 
 import (
+	"go-tmdb/db"
+	"go-tmdb/tmdb"
 	"log"
 	"math"
-	"new_app/db"
-	"new_app/tmdb"
 
 	"github.com/joho/godotenv"
 )
