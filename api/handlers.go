@@ -56,11 +56,10 @@ func getThingDetails(c *gin.Context) {
 		return
 	}
 
-	thing, _ := db.GetThingDetailsById(conn, idThing)
-	if thing == nil {
+	result, _ := db.GetThingDetailsByIdJson(conn, idThing)
+	if result == nil {
 		c.JSON(http.StatusNoContent, gin.H{})
 		return
 	}
-
-	c.JSON(http.StatusOK, thing)
+	c.JSON(http.StatusOK, result)
 }

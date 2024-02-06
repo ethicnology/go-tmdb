@@ -1,6 +1,8 @@
 package db
 
-import "github.com/jmoiron/sqlx"
+import (
+	"github.com/jmoiron/sqlx"
+)
 
 type Title struct {
 	ID         int    `db:"id"`
