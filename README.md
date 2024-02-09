@@ -1,5 +1,14 @@
 # go-tmdb
 
+Create a postgres database
+Collect `TheMovieDatabase` movies one by one
+Expose a simple api 
+
+## fill your own values in .env
+```sh
+cp .env.example .env
+```
+
 ## scrap tmdb
 ```sh
 go run main.go
